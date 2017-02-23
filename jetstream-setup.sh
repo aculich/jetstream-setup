@@ -3,7 +3,7 @@
 ## Run this script as root (with sudo)
 
 ## only run this script once, if docker is not already installed
-test -e /var/log/jetstream-setup.done && exit
+test -e /var/log/jetstream-setup.done && (echo "setup script has already been run according to /var/log/jetstream-setup.done" && exit)
 
 ## From official Docker recommendations for installing on Ubuntu 14.04 (trusty):
 ##    https://docs.docker.com/engine/installation/linux/ubuntu/
