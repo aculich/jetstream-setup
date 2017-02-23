@@ -50,6 +50,11 @@ sudo /usr/bin/docker $*
 EOF
 chmod 755 /usr/local/bin/docker
 
+## install Globus Personal Connect
+wget --directory-prefix=/usr/local https://s3.amazonaws.com/connect.globusonline.org/linux/stable/globusconnectpersonal-2.3.3.tgz
+(cd /usr/local && tar zxvf globusconnectpersonal-2.3.3.tgz)
+(cd /usr/local/bin && ln -s ../globusconnectpersonal-2.3.3/globusconnect)
+
 ## This should be the last line so that we only run the script once, per the
 ## check at the start of the script
 touch /var/log/jetstream-setup.done
