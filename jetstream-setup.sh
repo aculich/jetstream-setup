@@ -8,6 +8,8 @@
 apt-get update
 
 ## Recommended extra packages for Trusty 14.04¶
+##    Unless you have a strong reason not to, install the linux-image-extra-*
+##    packages, which allow Docker to use the aufs storage drivers.
 apt-get install -y --no-install-recommends \
     linux-image-extra-$(uname -r) \
     linux-image-extra-virtual
