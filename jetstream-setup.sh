@@ -58,3 +58,4 @@ wget --directory-prefix=/usr/local https://s3.amazonaws.com/connect.globusonline
 ## This should be the last line so that we only run the script once, per the
 ## check at the start of the script
 touch /var/log/jetstream-setup.done
+echo "Setup completed successfully"
