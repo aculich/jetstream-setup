@@ -36,3 +36,13 @@ apt-get -y install docker-engine
 ##  docker-engine | 1.13.1-0~ubuntu-trusty | https://apt.dockerproject.org/repo/ ubuntu-trusty/main amd64 Packages
 ##  docker-engine | 1.13.0-0~ubuntu-trusty | https://apt.dockerproject.org/repo/ ubuntu-trusty/main amd64 Packages
 ##    ...
+
+## Wrapper script to avoid explicitly requiring sudo to use docker (since
+## examples for Docker on Mac and Docker on Windows do not require it).
+
+echo > /usr/local/bin/docker <<EOF
+#!/bin/bash
+
+sudo /usr/bin/docker $*
+EOF
+chmod 755 /usr/local/bin/docker
