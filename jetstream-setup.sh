@@ -2,6 +2,9 @@
 
 ## Run this script as root (with sudo)
 
+## only run this script once, if docker is not already installed
+test -e /var/log/jetstream-setup.done && exit
+
 ## From official Docker recommendations for installing on Ubuntu 14.04 (trusty):
 ##    https://docs.docker.com/engine/installation/linux/ubuntu/
 
@@ -46,3 +49,7 @@ echo > /usr/local/bin/docker <<EOF
 sudo /usr/bin/docker $*
 EOF
 chmod 755 /usr/local/bin/docker
+
+## This should be the last line so that we only run the script once, per the
+## check at the start of the script
+touch /var/log/jetstream-setup.done
