@@ -30,3 +30,9 @@ add-apt-repository \
 
 apt-get update
 apt-get -y install docker-engine
+
+## latest Docker version as of 2017-02-23
+# $ apt-cache madison docker-engine
+##  docker-engine | 1.13.1-0~ubuntu-trusty | https://apt.dockerproject.org/repo/ ubuntu-trusty/main amd64 Packages
+##  docker-engine | 1.13.0-0~ubuntu-trusty | https://apt.dockerproject.org/repo/ ubuntu-trusty/main amd64 Packages
+##    ...
