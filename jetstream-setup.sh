@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -ex
 
 ## Run this script as root (with sudo)
 
