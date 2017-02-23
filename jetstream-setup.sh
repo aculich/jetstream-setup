@@ -21,12 +21,12 @@ apt-get install -y --no-install-recommends \
     curl \
     software-properties-common
 
-curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
+curl -fsSL https://apt.dockerproject.org/gpg | apt-key add -
 apt-key fingerprint 58118E89F3A912897C070ADBF76221572C52609D
-sudo add-apt-repository \
+add-apt-repository \
        "deb https://apt.dockerproject.org/repo/ \
        ubuntu-$(lsb_release -cs) \
        main"
 
-sudo apt-get update
-sudo apt-get -y install docker-engine
+apt-get update
+apt-get -y install docker-engine
