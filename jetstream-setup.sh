@@ -43,7 +43,7 @@ apt-get -y install docker-engine
 ## Wrapper script to avoid explicitly requiring sudo to use docker (since
 ## examples for Docker on Mac and Docker on Windows do not require it).
 
-echo > /usr/local/bin/docker <<EOF
+cat > /usr/local/bin/docker <<EOF
 #!/bin/bash
 
 sudo /usr/bin/docker $*
