@@ -10,3 +10,7 @@ Currently installs:
 
 - latest version (non-pinned) of Docker from the [official instructions](https://docs.docker.com/engine/installation/linux/ubuntu/)
 
+## Quickstart
+```
+bash <(curl -s https://raw.githubusercontent.com/aculich/jetstream-setup/master/jetstream-setup.sh)
+```
