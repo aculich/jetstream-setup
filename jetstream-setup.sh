@@ -43,12 +43,12 @@ apt-get -y install docker-engine
 ## Wrapper script to avoid explicitly requiring sudo to use docker (since
 ## examples for Docker on Mac and Docker on Windows do not require it).
 
-cat > /usr/local/bin/docker <<EOF
-#!/bin/bash
-
-sudo /usr/bin/docker $*
-EOF
-chmod 755 /usr/local/bin/docker
+# cat > /usr/local/bin/docker <<EOF
+# #!/bin/bash
+#
+# sudo /usr/bin/docker $*
+# EOF
+# chmod 755 /usr/local/bin/docker
 
 ## install Globus Personal Connect
 wget --directory-prefix=/usr/local https://s3.amazonaws.com/connect.globusonline.org/linux/stable/globusconnectpersonal-2.3.3.tgz
