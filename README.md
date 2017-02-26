@@ -14,7 +14,7 @@ GLOBUS_VERSION=2.3.3
 SINGULARITY_VERSION=2.2.1
 ```
 
-- the latest version of Docker from the [official instructions](https://docs.docker.com/engine/installation/linux/ubuntu/)
+Read the [official instructions](https://docs.docker.com/engine/installation/linux/ubuntu/) to install the latest version of Docker.
 
 ## Quickstart
 On a freshly-created Jetstream instance, become root and then download and run the setup script using these commands:
