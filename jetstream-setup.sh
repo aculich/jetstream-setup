@@ -1,6 +1,11 @@
 #!/bin/bash -ex
 
 ## Run this script as root (with sudo)
+if [[ $(/usr/bin/id -u) -ne 0 ]]; then
+    echo "This script must be run as root to install packages."
+    echo "Become root with: sudo -i"
+    exit
+fi
 
 ## only run this script once, if docker is not already installed
 test -e /var/log/jetstream-setup.done && (echo "setup script has already been run according to /var/log/jetstream-setup.done" && exit)
