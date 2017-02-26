@@ -74,3 +74,9 @@ wget --directory-prefix=/usr/local https://s3.amazonaws.com/connect.globusonline
 ## check at the start of the script
 touch /var/log/jetstream-setup.done
 echo "Setup completed successfully"
+echo
+echo "Restarting system in 60 seconds so all changes take effect."
+echo "Hit Ctrl-C to abort this automatic reboot."
+
+/sbin/shutdown -r +1
+
