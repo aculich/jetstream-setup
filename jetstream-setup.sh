@@ -8,7 +8,7 @@ if [[ $(/usr/bin/id -u) -ne 0 ]]; then
 fi
 
 ## only run this script once, if docker is not already installed
-if [[-e /var/log/jetstream-setup.done]]; then
+if [[test -e /var/log/jetstream-setup.done]]; then
   echo "setup script has already been run according to /var/log/jetstream-setup.done"
   exit
 fi
