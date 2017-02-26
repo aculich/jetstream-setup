@@ -21,5 +21,5 @@ On a freshly-created Jetstream instance, become root and then download and run t
 
 ```bash
 $ sudo -i
-# bash <(curl -s https://raw.githubusercontent.com/aculich/jetstream-setup/master/jetstream-setup.sh)
+# bash -ex <(curl -s https://raw.githubusercontent.com/aculich/jetstream-setup/master/jetstream-setup.sh)
 ```
