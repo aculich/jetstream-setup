@@ -1,5 +1,9 @@
 #!/bin/bash -ex
 
+DOCKER_VERSION=1.13.1
+GLOBUS_VERSION=2.3.3
+SINGULARITY_VERSION=2.2.1
+
 ## Run this script as root (with sudo)
 if [[ $(/usr/bin/id -u) -ne 0 ]]; then
     echo "This script must be run as root to install packages."
@@ -41,7 +45,9 @@ add-apt-repository \
        main"
 
 apt-get update
-apt-get -y install docker-engine
+
+VERSION=$DOCKER_VERSION
+apt-get -y install docker-engine=$VERSION
 
 ## latest Docker version as of 2017-02-23
 # $ apt-cache madison docker-engine
@@ -70,9 +76,18 @@ apt-get -y install byobu
 sudo -u $JETSTREAM_USER -i /usr/bin/byobu-launcher-install
 
 ## install Globus Personal Connect
-wget --directory-prefix=/usr/local https://s3.amazonaws.com/connect.globusonline.org/linux/stable/globusconnectpersonal-2.3.3.tgz
-(cd /usr/local && tar zxvf globusconnectpersonal-2.3.3.tgz)
-(cd /usr/local/bin && ln -s ../globusconnectpersonal-2.3.3/globusconnect)
+VERSION=$GLOBUS_VERSION
+wget --directory-prefix=/usr/local https://s3.amazonaws.com/connect.globusonline.org/linux/stable/globusconnectpersonal-$VERSION.tgz
+(cd /usr/local && tar zxvf globusconnectpersonal-$VERSION.tgz)
+(cd /usr/local/bin && ln -s ../globusconnectpersonal-$VERSION/globusconnect)
+
+VERSION=$SINGULARITY_VERSION
+wget https://github.com/singularityware/singularity/releases/download/$VERSION/singularity-$VERSION.tar.gz
+tar xvf singularity-$VERSION.tar.gz
+cd singularity-$VERSION
+./configure --prefix=/usr/local
+make
+sudo make install
 
 ## This should be the last line so that we only run the script once, per the
 ## check at the start of the script
