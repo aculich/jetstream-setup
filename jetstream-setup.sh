@@ -40,6 +40,7 @@ add-apt-repository \
        main"
 
 apt-get update
+apt-get -y upgrade
 apt-get -y install docker-engine
 
 ## latest Docker version as of 2017-02-23
