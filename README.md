@@ -11,6 +11,9 @@ Currently installs:
 - latest version (non-pinned) of Docker from the [official instructions](https://docs.docker.com/engine/installation/linux/ubuntu/)
 
 ## Quickstart
+On a freshly-created Jetstream instance, become root and then download and run the setup script using these commands:
+
 ```
-bash <(curl -s https://raw.githubusercontent.com/aculich/jetstream-setup/master/jetstream-setup.sh)
+$ sudo -i
+# bash <(curl -s https://raw.githubusercontent.com/aculich/jetstream-setup/master/jetstream-setup.sh)
 ```
