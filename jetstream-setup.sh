@@ -59,6 +59,12 @@ apt-get -y install docker-engine
 # EOF
 # chmod 755 /usr/local/bin/docker
 
+## add default Jetstream user (uid:1000) to docker group so the user does not
+## have to type `sudo docker` each time.
+## https://www.explainxkcd.com/wiki/index.php/149:_Sandwich
+JETSTREAM_USER=$(getent passwd 1000 | cut -d: -f1)
+adduser $JETSTREAM_USER docker
+
 ## install Globus Personal Connect
 wget --directory-prefix=/usr/local https://s3.amazonaws.com/connect.globusonline.org/linux/stable/globusconnectpersonal-2.3.3.tgz
 (cd /usr/local && tar zxvf globusconnectpersonal-2.3.3.tgz)
