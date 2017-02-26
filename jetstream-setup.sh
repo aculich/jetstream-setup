@@ -65,6 +65,10 @@ apt-get -y install docker-engine
 JETSTREAM_USER=$(getent passwd 1000 | cut -d: -f1)
 adduser $JETSTREAM_USER docker
 
+## automatically install and enable byobu for the default Jetstream user
+apt-get -y install byobu
+sudo -u $JETSTREAM_USER -i /usr/bin/byobu-launcher-install
+
 ## install Globus Personal Connect
 wget --directory-prefix=/usr/local https://s3.amazonaws.com/connect.globusonline.org/linux/stable/globusconnectpersonal-2.3.3.tgz
 (cd /usr/local && tar zxvf globusconnectpersonal-2.3.3.tgz)
