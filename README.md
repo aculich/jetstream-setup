@@ -9,7 +9,7 @@ Assumes that you are using the Ubuntu image curated by the Jetstream admins, spe
 Currently installs as of 2017-02-25:
 
 ```bash
-DOCKER_VERSION=1.13.1
+DOCKER_VERSION=1.13.1-0~ubuntu-trusty
 GLOBUS_VERSION=2.3.3
 SINGULARITY_VERSION=2.2.1
 ```
