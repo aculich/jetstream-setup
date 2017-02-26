@@ -82,12 +82,15 @@ wget --directory-prefix=/usr/local https://s3.amazonaws.com/connect.globusonline
 (cd /usr/local/bin && ln -s ../globusconnectpersonal-$VERSION/globusconnect)
 
 VERSION=$SINGULARITY_VERSION
+cd /tmp
 wget https://github.com/singularityware/singularity/releases/download/$VERSION/singularity-$VERSION.tar.gz
 tar xvf singularity-$VERSION.tar.gz
 cd singularity-$VERSION
 ./configure --prefix=/usr/local
 make
 sudo make install
+
+apt-get clean
 
 ## This should be the last line so that we only run the script once, per the
 ## check at the start of the script
@@ -98,4 +101,3 @@ echo "Restarting system in 60 seconds so all changes take effect."
 echo "Hit Ctrl-C to abort this automatic reboot."
 
 /sbin/shutdown -r +1
-
