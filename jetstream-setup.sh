@@ -8,7 +8,10 @@ if [[ $(/usr/bin/id -u) -ne 0 ]]; then
 fi
 
 ## only run this script once, if docker is not already installed
-test -e /var/log/jetstream-setup.done && (echo "setup script has already been run according to /var/log/jetstream-setup.done" && exit)
+if [[-e /var/log/jetstream-setup.done]]; then
+  echo "setup script has already been run according to /var/log/jetstream-setup.done"
+  exit
+fi
 
 ## From official Docker recommendations for installing on Ubuntu 14.04 (trusty):
 ##    https://docs.docker.com/engine/installation/linux/ubuntu/
