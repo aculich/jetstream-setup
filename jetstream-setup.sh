@@ -48,7 +48,7 @@ curl -fsSL https://apt.dockerproject.org/gpg | apt-key add -
 apt-key fingerprint 58118E89F3A912897C070ADBF76221572C52609D
 add-apt-repository \
        "deb https://apt.dockerproject.org/repo/ \
-       ubuntu-$(lsb_release -cs) \
+       ubuntu-$(lsb_release -c -s) \
        main"
 
 apt-get update
@@ -76,14 +76,32 @@ adduser $JETSTREAM_USER docker
 apt-get -y install byobu
 sudo -u $JETSTREAM_USER -i /usr/bin/byobu-launcher-install
 
-## Make sure some basic utilities are installed
+## Make sure some basic cloud utilities are installed
+## OpenStack, AWS, Azure, GCloud, Kubernetes
 apt-get install -y --no-install-recommends \
 	python3-pip \
-	python3-yaml
+	python3-yaml \
+	libffi-dev \
+	libssl-dev
 
 pip3 install --upgrade setuptools
 pip3 install pytz
 pip3 install python-openstackclient
+pip3 install awscli
+
+export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+echo "deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+sudo apt-get update && sudo apt-get install --yes google-cloud-sdk
+curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
+
+## only a wheezy (not trusty) repo is provided for azure-cli
+#echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/azure-cli/ $(lsb_release -c -s) main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
+echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/azure-cli/ wheezy main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
+sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
+sudo apt-get install --yes apt-transport-https
+sudo apt-get update && sudo apt-get install --yes azure-cli
+
 
 ## install Globus Personal Connect
 VERSION=$GLOBUS_VERSION
