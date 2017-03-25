@@ -53,7 +53,7 @@ add-apt-repository \
 
 apt-get update
 
-VERSION=$(DOCKER_VERSION)~ubuntu-$(lsb_release -c -s)
+VERSION=${DOCKER_VERSION}~ubuntu-$(lsb_release -c -s)
 apt-get -y install docker-engine=$VERSION
 
 ## Wrapper script to avoid explicitly requiring sudo to use docker (since
