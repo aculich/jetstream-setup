@@ -53,7 +53,7 @@ add-apt-repository \
 
 apt-get update
 
-VERSION=$(DOCKER_VERSION)~ubuntu-$(ubuntu_release)
+VERSION=$(DOCKER_VERSION)~ubuntu-$(lsb_release -c -s)
 apt-get -y install docker-engine=$VERSION
 
 ## Wrapper script to avoid explicitly requiring sudo to use docker (since
@@ -89,12 +89,14 @@ pip3 install pytz
 pip3 install python-openstackclient
 pip3 install awscli
 
+## https://cloud.google.com/sdk/downloads#apt-get
 export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 sudo apt-get update && sudo apt-get install --yes google-cloud-sdk
 curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
 
+## https://docs.microsoft.com/en-us/cli/azure/install-azure-cli
 ## only a wheezy (not trusty) repo is provided for azure-cli
 #echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/azure-cli/ $(lsb_release -c -s) main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
 echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/azure-cli/ wheezy main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
