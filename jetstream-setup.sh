@@ -1,6 +1,13 @@
 #!/bin/bash -ex
 
-DOCKER_VERSION=1.13.1-0~ubuntu-trusty
+## latest versions as of 2017-03-24
+# $ apt-cache madison docker-engine
+##  docker-engine | 17.03.0~ce-0~ubuntu-trusty | https://apt.dockerproject.org/repo/ ubuntu-trusty/main amd64 Packages
+##  docker-engine | 1.13.1-0~ubuntu-trusty     | https://apt.dockerproject.org/repo/ ubuntu-trusty/main amd64 Packages
+##  docker-engine | 1.13.0-0~ubuntu-trusty     | https://apt.dockerproject.org/repo/ ubuntu-trusty/main amd64 Packages
+##    ...
+
+DOCKER_VERSION=17.03.0~ce-0
 GLOBUS_VERSION=2.3.3
 SINGULARITY_VERSION=2.2.1
 
@@ -46,14 +53,8 @@ add-apt-repository \
 
 apt-get update
 
-VERSION=$DOCKER_VERSION
+VERSION=$(DOCKER_VERSION)~ubuntu-$(ubuntu_release)
 apt-get -y install docker-engine=$VERSION
-
-## latest Docker version as of 2017-02-23
-# $ apt-cache madison docker-engine
-##  docker-engine | 1.13.1-0~ubuntu-trusty | https://apt.dockerproject.org/repo/ ubuntu-trusty/main amd64 Packages
-##  docker-engine | 1.13.0-0~ubuntu-trusty | https://apt.dockerproject.org/repo/ ubuntu-trusty/main amd64 Packages
-##    ...
 
 ## Wrapper script to avoid explicitly requiring sudo to use docker (since
 ## examples for Docker on Mac and Docker on Windows do not require it).

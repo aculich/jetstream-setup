@@ -6,10 +6,10 @@ Also included are some large-ish Docker images that we pull at setup time so the
 
 Assumes that you are using the Ubuntu image curated by the Jetstream admins, specifically: [Ubuntu 14.04.3 Development GUI](https://use.jetstream-cloud.org/application/images/54)
 
-Currently installs as of 2017-02-25:
+Currently installs as of 2017-03-24:
 
 ```bash
-DOCKER_VERSION=1.13.1-0~ubuntu-trusty
+DOCKER_VERSION=17.03.0~ce-0
 GLOBUS_VERSION=2.3.3
 SINGULARITY_VERSION=2.2.1
 ```
