@@ -76,6 +76,15 @@ adduser $JETSTREAM_USER docker
 apt-get -y install byobu
 sudo -u $JETSTREAM_USER -i /usr/bin/byobu-launcher-install
 
+## Make sure some basic utilities are installed
+apt-get install -y --no-install-recommends \
+	python3-pip \
+	python3-yaml
+
+pip3 install --upgrade setuptools
+pip3 install pytz
+pip3 install python-openstackclient
+
 ## install Globus Personal Connect
 VERSION=$GLOBUS_VERSION
 wget --directory-prefix=/usr/local https://s3.amazonaws.com/connect.globusonline.org/linux/stable/globusconnectpersonal-$VERSION.tgz
