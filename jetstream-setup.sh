@@ -81,6 +81,7 @@ sudo -u $JETSTREAM_USER -i /usr/bin/byobu-launcher-install
 apt-get install -y --no-install-recommends \
 	python3-pip \
 	python3-yaml \
+	python3-dev \
 	libffi-dev \
 	libssl-dev
 
